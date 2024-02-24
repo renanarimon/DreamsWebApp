@@ -33,10 +33,10 @@ const getDream = async (req, res) => {
 
 //create new dream
 const createDream = async (req, res) => {
-    const { title, duoDate, tools, steps } = req.body;
+    const { title, dueDate, tools, steps } = req.body;
     // add doc to DB
     try {
-        const dream = await Dream.create({ title, duoDate, tools, steps })
+        const dream = await Dream.create({ title, dueDate, tools, steps })
         res.status(200).json(dream);
     }
     catch (err) {

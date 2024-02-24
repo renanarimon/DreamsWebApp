@@ -7,7 +7,7 @@ const DreamDetails = ({ dream }) => {
         <div className="dream-details">
             <h4>{dream.title}</h4>
 
-            <p><strong>Duo date: </strong>{dream.duoDate}</p>
+            <p><strong>Due date: </strong>{dream.dueDate}</p>
 
             {tools && tools.length > 0 &&
                 <p><strong>Tools: </strong>

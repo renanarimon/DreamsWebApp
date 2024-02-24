@@ -8,7 +8,7 @@ const dreamSchema = new schema({
         type: String,
         require: true
     },
-    duoDate: {
+    dueDate: {
         type: Number,
         require: true
     },
