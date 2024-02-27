@@ -6,11 +6,23 @@ const dreamSchema = new schema({
 
     title: {
         type: String,
-        require: true
+        require: true,
+        validate: {
+            validator: (value) => {
+                return typeof value === 'string' && value.trim().length > 0;
+            },
+            message: 'Must be a non-empty string'
+        }
     },
     dueDate: {
         type: Number,
-        require: true
+        require: true,
+        validate: {
+            validator: (value) => {
+                return typeof value === 'number'
+            },
+            message: 'Must be a number'
+        }
     },
 
     tools: {
@@ -18,7 +30,7 @@ const dreamSchema = new schema({
         require: false,
         validate: {
             validator: (value) => {
-                if (!Array.isArray(value)) {
+                if (!Array.isArray(value) || value.length <= 0) {
                     return false;
                 }
                 return value.every(item => typeof item === 'string')
@@ -29,16 +41,16 @@ const dreamSchema = new schema({
 
     steps: {
         type: {},
-        require: true,
+        require: false,
         validate: {
             validator: (value) => {
-                if (!Array.isArray(value)) {
+                if (!Array.isArray(value) || value.length <= 0) {
                     return false;
                 }
 
                 return value.every(item => typeof item === 'string');
             }
-            , message: 'Invalid value - should be string array'
+            , message: 'Invalid value - should be string array, at least 1 value'
         }
     }
 }, { timestamps: true })

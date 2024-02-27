@@ -3,12 +3,45 @@ import FormRow from "./FormRow";
 
 const NewDreamForm = () => {
     const [title, setTitle] = useState('')
-    const [dueDate, setDueDate] = useState(null)
+    const [dueDate, setDueDate] = useState('')
     const [tools, setTools] = useState([])
     const [steps, setSteps] = useState([])
-    console.log(`title: ${title}, Date: ${dueDate}`);
+
+    const [error, setError] = useState(null)
+
+    console.log(`title: ${title}, Date: ${dueDate}, Tools: ${tools}, Steps: ${steps}`);
+
+    /** POST dream: get input from user, and connect to backend to post it into db */
+    const handaleAddDream = async (e) => {
+        e.preventDefault(); // not render in each refresh, only when click button
+
+        const dream = {title, dueDate, tools, steps};
+
+        const response = await fetch('/api/dreams', {
+            method: 'POST', 
+            body: JSON.stringify(dream), // send the dream as a json to the POST request
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const json = await response.json();
+        if(!response.ok){
+            setError(json.error);
+            console.log(error);
+        }else{
+            setError(null)            
+            console.log(json);
+        }
+        setTitle('');
+        setDueDate('');
+        setTools([]);
+        setSteps([]);
+    }
+
+
+
     return (
-        <form className="new-dream-form">
+        <form className="new-dream-form" onSubmit={handaleAddDream}>
             <h2>Add new dream</h2>
             <FormRow
                 label="Title: "
@@ -22,7 +55,20 @@ const NewDreamForm = () => {
                 get={dueDate}
                 set={setDueDate}
             />
-
+            <FormRow
+                label="Tools: "
+                type="array"
+                get={tools}
+                set={setTools}
+            />
+            <FormRow
+                label="Steps: "
+                type="array"
+                get={steps}
+                set={setSteps}
+            />
+        <button>Add dream</button>
+        {error && <div className="error">{error}</div>}
         </form>
     )
 }
