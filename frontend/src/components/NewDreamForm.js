@@ -4,8 +4,8 @@ import FormRow from "./FormRow";
 const NewDreamForm = () => {
     const [title, setTitle] = useState('')
     const [dueDate, setDueDate] = useState('')
-    const [tools, setTools] = useState([])
-    const [steps, setSteps] = useState([])
+    const [tools, setTools] = useState(null)
+    const [steps, setSteps] = useState(null)
 
     const [error, setError] = useState(null)
 
@@ -34,11 +34,9 @@ const NewDreamForm = () => {
         }
         setTitle('');
         setDueDate('');
-        setTools([]);
-        setSteps([]);
+        setTools(null);
+        setSteps(null);
     }
-
-
 
     return (
         <form className="new-dream-form" onSubmit={handaleAddDream}>
@@ -67,7 +65,7 @@ const NewDreamForm = () => {
                 get={steps}
                 set={setSteps}
             />
-        <button>Add dream</button>
+        <button className="btn-edit">Add dream</button>
         {error && <div className="error">{error}</div>}
         </form>
     )

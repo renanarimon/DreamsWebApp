@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import DreamDetails from "../components/DreamDetails";
-import NewDreamForm from "../components/NewDreamForm"
 
 const Home = () => {
 
@@ -32,9 +31,13 @@ const Home = () => {
                         <DreamDetails key={dream._id} dream={dream} />
                     ))}
             </div>
-            <NewDreamForm />
+           
 
-
+            <Link to="/new-dream" >
+                <button className="btn-edit">
+                    <h3>Add new dream</h3>
+                </button>
+            </Link>
         </div>
     )
 }

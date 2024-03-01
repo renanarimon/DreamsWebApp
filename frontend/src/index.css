@@ -20,7 +20,7 @@ header{
 header .container{
   max-width: 100%;
   margin: 0 auto;
-  padding: 2% 4%;
+  /* padding: 2% 4%; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,4 +66,48 @@ header a{
 .dreams h3{
   font-size: 1.5em;
   color: #000000;
+}
+
+
+label, input{
+  display: block;
+}
+
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /* width: 100%; */
+  border: 1px solid #ddd; 
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* form button{
+  background: var(--primary);
+  border: 0;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 10px;
+  font-family:"Comfortaa" ;
+  cursor: pointer;
+} */
+
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid #ddd; 
+  border-radius: 4px;
+  color: var(--error);
+  margin: 20px 0;
+}
+
+.btn-edit{
+  background: var(--primary);
+  border: 0;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 10px;
+  font-family:"Comfortaa" ;
+  cursor: pointer;
 }
